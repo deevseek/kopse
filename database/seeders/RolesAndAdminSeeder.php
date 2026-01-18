@@ -34,6 +34,7 @@ class RolesAndAdminSeeder extends Seeder
             [
                 'name' => 'Admin Koperasi',
                 'password' => Hash::make('password'),
+                'status' => 'AKTIF',
             ]
         );
 

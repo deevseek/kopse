@@ -34,8 +34,6 @@ Route::prefix('admin')->middleware(['auth', 'role:Admin|Petugas'])->group(functi
     Route::resource('/master-data/anggota', AnggotaController::class)
         ->except(['index', 'show'])
         ->names('admin.master-data.anggota');
-    Route::get('/master-data/pengguna', [PenggunaController::class, 'index'])->name('admin.master-data.pengguna');
-    Route::get('/master-data/roles', [RoleController::class, 'index'])->name('admin.master-data.roles');
     Route::get('/master-data/jenis-simpanan', [JenisSimpananController::class, 'index'])->name('admin.master-data.jenis-simpanan');
     Route::get('/master-data/produk-pinjaman', [ProdukPinjamanController::class, 'index'])->name('admin.master-data.produk-pinjaman');
     Route::get('/master-data/coa', [CoaController::class, 'index'])->name('admin.master-data.coa');
@@ -49,6 +47,8 @@ Route::prefix('admin')->middleware(['auth', 'role:Admin|Petugas'])->group(functi
 });
 
 Route::prefix('admin/master')->middleware(['auth', 'role:Admin|Petugas|Pembina'])->group(function () {
+    Route::get('/pengguna', [PenggunaController::class, 'index'])->name('admin.master.pengguna.index');
+    Route::get('/role', [RoleController::class, 'index'])->name('admin.master.role.index');
     Route::get('/jenis-simpanan', [SavingTypeController::class, 'index'])->name('admin.master.jenis-simpanan.index');
     Route::get('/produk-pinjaman', [LoanProductController::class, 'index'])->name('admin.master.produk-pinjaman.index');
     Route::get('/akun', [AccountController::class, 'index'])->name('admin.master.akun.index');
@@ -58,6 +58,14 @@ Route::prefix('admin/master')->middleware(['auth', 'role:Admin|Petugas|Pembina']
 });
 
 Route::prefix('admin/master')->middleware(['auth', 'role:Admin'])->group(function () {
+    Route::get('/pengguna/create', [PenggunaController::class, 'create'])->name('admin.master.pengguna.create');
+    Route::post('/pengguna', [PenggunaController::class, 'store'])->name('admin.master.pengguna.store');
+    Route::get('/pengguna/{user}/edit', [PenggunaController::class, 'edit'])->name('admin.master.pengguna.edit');
+    Route::put('/pengguna/{user}', [PenggunaController::class, 'update'])->name('admin.master.pengguna.update');
+    Route::delete('/pengguna/{user}', [PenggunaController::class, 'destroy'])->name('admin.master.pengguna.destroy');
+    Route::get('/role/{role}/edit', [RoleController::class, 'edit'])->name('admin.master.role.edit');
+    Route::put('/role/{role}', [RoleController::class, 'update'])->name('admin.master.role.update');
+
     Route::get('/jenis-simpanan/create', [SavingTypeController::class, 'create'])->name('admin.master.jenis-simpanan.create');
     Route::post('/jenis-simpanan', [SavingTypeController::class, 'store'])->name('admin.master.jenis-simpanan.store');
     Route::get('/jenis-simpanan/{savingType}/edit', [SavingTypeController::class, 'edit'])->name('admin.master.jenis-simpanan.edit');
