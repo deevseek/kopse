@@ -26,6 +26,11 @@ class Member extends Model
         'join_date' => 'date',
     ];
 
+    public function savingsAccounts()
+    {
+        return $this->hasMany(SavingsAccount::class);
+    }
+
     protected static function booted(): void
     {
         static::creating(function (Member $member) {
