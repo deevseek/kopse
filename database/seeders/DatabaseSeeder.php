@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             SavingTypeSeeder::class,
             AccountSeeder::class,
+            CooperativeSettingSeeder::class,
         ]);
     }
 }
