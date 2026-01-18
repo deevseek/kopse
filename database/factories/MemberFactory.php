@@ -18,7 +18,6 @@ class MemberFactory extends Factory
         $status = $this->faker->randomElement(['AKTIF', 'AKTIF', 'AKTIF', 'LULUS', 'KELUAR']);
 
         return [
-            'member_no' => Member::generateMemberNumber(),
             'name' => $this->faker->name(),
             'member_type' => $memberType,
             'class_name' => $memberType === 'SISWA'
