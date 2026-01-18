@@ -17,7 +17,15 @@
         @endif
 
         <div class="flex flex-col gap-2 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
-            <h2 class="text-lg font-semibold text-slate-900">Daftar Anggota Simpanan</h2>
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                <h2 class="text-lg font-semibold text-slate-900">Daftar Anggota Simpanan</h2>
+                @hasanyrole('Admin|Petugas')
+                    <a href="{{ route('admin.simpanan.create') }}"
+                        class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-slate-800">
+                        Tambah Simpanan
+                    </a>
+                @endhasanyrole
+            </div>
             <p class="text-sm text-slate-500">Ringkasan saldo simpanan pokok, wajib, dan manasuka setiap anggota.</p>
         </div>
 
