@@ -45,10 +45,19 @@
                             <x-admin.nav-link :href="route('admin.master.produk-pinjaman.index')" :active="request()->routeIs('admin.master.produk-pinjaman.*')">Produk Pinjaman</x-admin.nav-link>
                             <x-admin.nav-link :href="route('admin.master.akun.index')" :active="request()->routeIs('admin.master.akun.*')">Akun / COA</x-admin.nav-link>
                             <x-admin.nav-link :href="route('admin.master.periode.index')" :active="request()->routeIs('admin.master.periode.*')">Periode / Tahun Buku</x-admin.nav-link>
-                            <x-admin.nav-link :href="route('admin.master-data.pengaturan-koperasi')" :active="request()->routeIs('admin.master-data.pengaturan-koperasi')">Pengaturan Koperasi</x-admin.nav-link>
+                            <x-admin.nav-link :href="route('admin.master.pengaturan-koperasi.edit')" :active="request()->routeIs('admin.master.pengaturan-koperasi.*')">Pengaturan Koperasi</x-admin.nav-link>
                         </div>
                     </div>
                 @endhasanyrole
+
+                @hasrole('Pembina')
+                    <div>
+                        <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-slate-400">Master Data</p>
+                        <div class="space-y-1">
+                            <x-admin.nav-link :href="route('admin.master.pengaturan-koperasi.edit')" :active="request()->routeIs('admin.master.pengaturan-koperasi.*')">Pengaturan Koperasi</x-admin.nav-link>
+                        </div>
+                    </div>
+                @endhasrole
 
                 @hasanyrole('Admin|Petugas')
                     <div>

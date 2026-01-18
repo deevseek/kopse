@@ -14,8 +14,8 @@ use App\Http\Controllers\Admin\ShuController;
 use App\Http\Controllers\Admin\SimpananController;
 use App\Http\Controllers\Admin\MasterData\AnggotaController;
 use App\Http\Controllers\Admin\MasterData\CoaController;
+use App\Http\Controllers\Admin\MasterData\CooperativeSettingController;
 use App\Http\Controllers\Admin\MasterData\JenisSimpananController;
-use App\Http\Controllers\Admin\MasterData\PengaturanKoperasiController;
 use App\Http\Controllers\Admin\MasterData\PenggunaController;
 use App\Http\Controllers\Admin\MasterData\PeriodeController;
 use App\Http\Controllers\Admin\MasterData\ProdukPinjamanController;
@@ -40,8 +40,6 @@ Route::prefix('admin')->middleware(['auth', 'role:Admin|Petugas'])->group(functi
     Route::get('/master-data/produk-pinjaman', [ProdukPinjamanController::class, 'index'])->name('admin.master-data.produk-pinjaman');
     Route::get('/master-data/coa', [CoaController::class, 'index'])->name('admin.master-data.coa');
     Route::get('/master-data/periode', [PeriodeController::class, 'index'])->name('admin.master-data.periode');
-    Route::get('/master-data/pengaturan-koperasi', [PengaturanKoperasiController::class, 'index'])->name('admin.master-data.pengaturan-koperasi');
-
     Route::get('/simpanan', [SimpananController::class, 'index'])->name('admin.simpanan');
     Route::get('/pinjaman', [PinjamanController::class, 'index'])->name('admin.pinjaman');
     Route::get('/kas', [KasController::class, 'index'])->name('admin.kas');
@@ -55,6 +53,8 @@ Route::prefix('admin/master')->middleware(['auth', 'role:Admin|Petugas|Pembina']
     Route::get('/produk-pinjaman', [LoanProductController::class, 'index'])->name('admin.master.produk-pinjaman.index');
     Route::get('/akun', [AccountController::class, 'index'])->name('admin.master.akun.index');
     Route::get('/periode', [MasterPeriodController::class, 'index'])->name('admin.master.periode.index');
+    Route::get('/pengaturan-koperasi', [CooperativeSettingController::class, 'edit'])
+        ->name('admin.master.pengaturan-koperasi.edit');
 });
 
 Route::prefix('admin/master')->middleware(['auth', 'role:Admin'])->group(function () {
@@ -81,6 +81,9 @@ Route::prefix('admin/master')->middleware(['auth', 'role:Admin'])->group(functio
     Route::get('/periode/{period}/edit', [MasterPeriodController::class, 'edit'])->name('admin.master.periode.edit');
     Route::put('/periode/{period}', [MasterPeriodController::class, 'update'])->name('admin.master.periode.update');
     Route::delete('/periode/{period}', [MasterPeriodController::class, 'destroy'])->name('admin.master.periode.destroy');
+
+    Route::put('/pengaturan-koperasi', [CooperativeSettingController::class, 'update'])
+        ->name('admin.master.pengaturan-koperasi.update');
 });
 
 Route::prefix('admin')->middleware(['auth', 'role:Admin|Petugas|Pembina'])->group(function () {
