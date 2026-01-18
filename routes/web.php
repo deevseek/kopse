@@ -98,12 +98,17 @@ Route::prefix('admin')->middleware(['auth', 'role:Admin|Petugas|Pembina'])->grou
     Route::get('/master-data/anggota/{member}', [AnggotaController::class, 'show'])->name('admin.master-data.anggota.show');
     Route::get('/laporan', [LaporanController::class, 'index'])->name('admin.laporan');
     Route::get('/simpanan', [SavingController::class, 'index'])->name('admin.simpanan');
-    Route::get('/simpanan/{member}', [SavingController::class, 'show'])->name('admin.simpanan.show');
 });
 
 Route::prefix('admin')->middleware(['auth', 'role:Admin|Petugas'])->group(function () {
+    Route::get('/simpanan/create', [SavingController::class, 'create'])->name('admin.simpanan.create');
+    Route::post('/simpanan', [SavingController::class, 'store'])->name('admin.simpanan.store');
     Route::post('/simpanan/{member}/deposit', [SavingController::class, 'storeDeposit'])->name('admin.simpanan.deposit');
     Route::post('/simpanan/{member}/withdraw', [SavingController::class, 'storeWithdraw'])->name('admin.simpanan.withdraw');
+});
+
+Route::prefix('admin')->middleware(['auth', 'role:Admin|Petugas|Pembina'])->group(function () {
+    Route::get('/simpanan/{member}', [SavingController::class, 'show'])->name('admin.simpanan.show');
 });
 
 require __DIR__.'/auth.php';
