@@ -16,5 +16,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(RolesAndAdminSeeder::class);
         $this->call(MemberSeeder::class);
+        $this->call([
+            SavingTypeSeeder::class,
+            AccountSeeder::class,
+        ]);
     }
 }
