@@ -27,7 +27,9 @@ Route::middleware(['auth', 'role:Admin|Petugas|Pembina'])->group(function () {
 });
 
 Route::prefix('admin')->middleware(['auth', 'role:Admin|Petugas'])->group(function () {
-    Route::get('/master-data/anggota', [AnggotaController::class, 'index'])->name('admin.master-data.anggota');
+    Route::resource('/master-data/anggota', AnggotaController::class)
+        ->except(['index', 'show'])
+        ->names('admin.master-data.anggota');
     Route::get('/master-data/pengguna', [PenggunaController::class, 'index'])->name('admin.master-data.pengguna');
     Route::get('/master-data/roles', [RoleController::class, 'index'])->name('admin.master-data.roles');
     Route::get('/master-data/jenis-simpanan', [JenisSimpananController::class, 'index'])->name('admin.master-data.jenis-simpanan');
@@ -45,6 +47,8 @@ Route::prefix('admin')->middleware(['auth', 'role:Admin|Petugas'])->group(functi
 });
 
 Route::prefix('admin')->middleware(['auth', 'role:Admin|Petugas|Pembina'])->group(function () {
+    Route::get('/master-data/anggota', [AnggotaController::class, 'index'])->name('admin.master-data.anggota.index');
+    Route::get('/master-data/anggota/{member}', [AnggotaController::class, 'show'])->name('admin.master-data.anggota.show');
     Route::get('/laporan', [LaporanController::class, 'index'])->name('admin.laporan');
 });
 
