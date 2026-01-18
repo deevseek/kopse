@@ -39,8 +39,8 @@
                         <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-slate-400">Master Data</p>
                         <div class="space-y-1">
                             <x-admin.nav-link :href="route('admin.master-data.anggota.index')" :active="request()->routeIs('admin.master-data.anggota.*')">Anggota</x-admin.nav-link>
-                            <x-admin.nav-link :href="route('admin.master-data.pengguna')" :active="request()->routeIs('admin.master-data.pengguna')">Pengguna</x-admin.nav-link>
-                            <x-admin.nav-link :href="route('admin.master-data.roles')" :active="request()->routeIs('admin.master-data.roles')">Role &amp; Hak Akses</x-admin.nav-link>
+                            <x-admin.nav-link :href="route('admin.master.pengguna.index')" :active="request()->routeIs('admin.master.pengguna.*')">Pengguna</x-admin.nav-link>
+                            <x-admin.nav-link :href="route('admin.master.role.index')" :active="request()->routeIs('admin.master.role.*')">Role &amp; Hak Akses</x-admin.nav-link>
                             <x-admin.nav-link :href="route('admin.master.jenis-simpanan.index')" :active="request()->routeIs('admin.master.jenis-simpanan.*')">Jenis Simpanan</x-admin.nav-link>
                             <x-admin.nav-link :href="route('admin.master.produk-pinjaman.index')" :active="request()->routeIs('admin.master.produk-pinjaman.*')">Produk Pinjaman</x-admin.nav-link>
                             <x-admin.nav-link :href="route('admin.master.akun.index')" :active="request()->routeIs('admin.master.akun.*')">Akun / COA</x-admin.nav-link>
@@ -54,6 +54,8 @@
                     <div>
                         <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-slate-400">Master Data</p>
                         <div class="space-y-1">
+                            <x-admin.nav-link :href="route('admin.master.pengguna.index')" :active="request()->routeIs('admin.master.pengguna.*')">Pengguna</x-admin.nav-link>
+                            <x-admin.nav-link :href="route('admin.master.role.index')" :active="request()->routeIs('admin.master.role.*')">Role &amp; Hak Akses</x-admin.nav-link>
                             <x-admin.nav-link :href="route('admin.master.pengaturan-koperasi.edit')" :active="request()->routeIs('admin.master.pengaturan-koperasi.*')">Pengaturan Koperasi</x-admin.nav-link>
                         </div>
                     </div>
