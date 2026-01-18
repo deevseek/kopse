@@ -91,11 +91,12 @@
         const helperText = document.getElementById('amount-helper');
         const submitButton = document.getElementById('saving-submit');
 
-        const savingTypes = @json($savingTypes->values()->map(fn($type) => [
-            'id' => $type->id,
-            'code' => $type->code,
-            'name' => $type->name,
-        ]));
+        const savingTypesData = @json($savingTypes);
+        const savingTypes = savingTypesData.map(type => ({
+            id: type.id,
+            code: type.code,
+            name: type.name,
+        }));
         const savingTypeMap = savingTypes.reduce((acc, type) => {
             acc[String(type.id)] = type;
             return acc;
