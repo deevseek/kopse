@@ -11,6 +11,14 @@ class RolesAndAdminSeeder extends Seeder
 {
     public function run(): void
     {
+        if (! class_exists(Role::class)) {
+            $this->command?->error(
+                'Spatie roles are unavailable. Install spatie/laravel-permission and run composer install before seeding.'
+            );
+
+            return;
+        }
+
         $roles = [
             'Admin',
             'Petugas',
