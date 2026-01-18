@@ -38,7 +38,7 @@
                     <div>
                         <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-slate-400">Master Data</p>
                         <div class="space-y-1">
-                            <x-admin.nav-link :href="route('admin.master-data.anggota')" :active="request()->routeIs('admin.master-data.anggota')">Anggota</x-admin.nav-link>
+                            <x-admin.nav-link :href="route('admin.master-data.anggota.index')" :active="request()->routeIs('admin.master-data.anggota.*')">Anggota</x-admin.nav-link>
                             <x-admin.nav-link :href="route('admin.master-data.pengguna')" :active="request()->routeIs('admin.master-data.pengguna')">Pengguna</x-admin.nav-link>
                             <x-admin.nav-link :href="route('admin.master-data.roles')" :active="request()->routeIs('admin.master-data.roles')">Role &amp; Hak Akses</x-admin.nav-link>
                             <x-admin.nav-link :href="route('admin.master-data.jenis-simpanan')" :active="request()->routeIs('admin.master-data.jenis-simpanan')">Jenis Simpanan</x-admin.nav-link>
