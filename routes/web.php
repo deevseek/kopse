@@ -5,13 +5,13 @@ use App\Http\Controllers\Admin\DanaCadanganController;
 use App\Http\Controllers\Admin\KasController;
 use App\Http\Controllers\Admin\KeamananSistemController;
 use App\Http\Controllers\Admin\LaporanController;
+use App\Http\Controllers\Admin\SavingController;
 use App\Http\Controllers\Admin\Master\AccountController;
 use App\Http\Controllers\Admin\Master\LoanProductController;
 use App\Http\Controllers\Admin\Master\PeriodController as MasterPeriodController;
 use App\Http\Controllers\Admin\Master\SavingTypeController;
 use App\Http\Controllers\Admin\PinjamanController;
 use App\Http\Controllers\Admin\ShuController;
-use App\Http\Controllers\Admin\SimpananController;
 use App\Http\Controllers\Admin\MasterData\AnggotaController;
 use App\Http\Controllers\Admin\MasterData\CoaController;
 use App\Http\Controllers\Admin\MasterData\CooperativeSettingController;
@@ -38,7 +38,6 @@ Route::prefix('admin')->middleware(['auth', 'role:Admin|Petugas'])->group(functi
     Route::get('/master-data/produk-pinjaman', [ProdukPinjamanController::class, 'index'])->name('admin.master-data.produk-pinjaman');
     Route::get('/master-data/coa', [CoaController::class, 'index'])->name('admin.master-data.coa');
     Route::get('/master-data/periode', [PeriodeController::class, 'index'])->name('admin.master-data.periode');
-    Route::get('/simpanan', [SimpananController::class, 'index'])->name('admin.simpanan');
     Route::get('/pinjaman', [PinjamanController::class, 'index'])->name('admin.pinjaman');
     Route::get('/kas', [KasController::class, 'index'])->name('admin.kas');
     Route::get('/shu', [ShuController::class, 'index'])->name('admin.shu');
@@ -98,6 +97,13 @@ Route::prefix('admin')->middleware(['auth', 'role:Admin|Petugas|Pembina'])->grou
     Route::get('/master-data/anggota', [AnggotaController::class, 'index'])->name('admin.master-data.anggota.index');
     Route::get('/master-data/anggota/{member}', [AnggotaController::class, 'show'])->name('admin.master-data.anggota.show');
     Route::get('/laporan', [LaporanController::class, 'index'])->name('admin.laporan');
+    Route::get('/simpanan', [SavingController::class, 'index'])->name('admin.simpanan');
+    Route::get('/simpanan/{member}', [SavingController::class, 'show'])->name('admin.simpanan.show');
+});
+
+Route::prefix('admin')->middleware(['auth', 'role:Admin|Petugas'])->group(function () {
+    Route::post('/simpanan/{member}/deposit', [SavingController::class, 'storeDeposit'])->name('admin.simpanan.deposit');
+    Route::post('/simpanan/{member}/withdraw', [SavingController::class, 'storeWithdraw'])->name('admin.simpanan.withdraw');
 });
 
 require __DIR__.'/auth.php';

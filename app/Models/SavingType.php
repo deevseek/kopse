@@ -21,4 +21,9 @@ class SavingType extends Model
         'default_amount' => 'decimal:2',
         'is_active' => 'boolean',
     ];
+
+    public function savingsAccounts()
+    {
+        return $this->hasMany(SavingsAccount::class);
+    }
 }
