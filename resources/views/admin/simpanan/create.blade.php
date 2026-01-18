@@ -109,7 +109,7 @@
         const updateSavingTypeOptions = () => {
             const isWithdraw = trxSelect.value === 'TARIK';
             Array.from(typeSelect.options).forEach((option) => {
-            const type = savingTypeMap[option.value];
+                const type = savingTypeMap[option.value];
                 if (!type) {
                     return;
                 }
