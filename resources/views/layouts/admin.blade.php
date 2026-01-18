@@ -41,10 +41,10 @@
                             <x-admin.nav-link :href="route('admin.master-data.anggota.index')" :active="request()->routeIs('admin.master-data.anggota.*')">Anggota</x-admin.nav-link>
                             <x-admin.nav-link :href="route('admin.master-data.pengguna')" :active="request()->routeIs('admin.master-data.pengguna')">Pengguna</x-admin.nav-link>
                             <x-admin.nav-link :href="route('admin.master-data.roles')" :active="request()->routeIs('admin.master-data.roles')">Role &amp; Hak Akses</x-admin.nav-link>
-                            <x-admin.nav-link :href="route('admin.master-data.jenis-simpanan')" :active="request()->routeIs('admin.master-data.jenis-simpanan')">Jenis Simpanan</x-admin.nav-link>
-                            <x-admin.nav-link :href="route('admin.master-data.produk-pinjaman')" :active="request()->routeIs('admin.master-data.produk-pinjaman')">Produk Pinjaman</x-admin.nav-link>
-                            <x-admin.nav-link :href="route('admin.master-data.coa')" :active="request()->routeIs('admin.master-data.coa')">Akun / COA</x-admin.nav-link>
-                            <x-admin.nav-link :href="route('admin.master-data.periode')" :active="request()->routeIs('admin.master-data.periode')">Periode / Tahun Buku</x-admin.nav-link>
+                            <x-admin.nav-link :href="route('admin.master.jenis-simpanan.index')" :active="request()->routeIs('admin.master.jenis-simpanan.*')">Jenis Simpanan</x-admin.nav-link>
+                            <x-admin.nav-link :href="route('admin.master.produk-pinjaman.index')" :active="request()->routeIs('admin.master.produk-pinjaman.*')">Produk Pinjaman</x-admin.nav-link>
+                            <x-admin.nav-link :href="route('admin.master.akun.index')" :active="request()->routeIs('admin.master.akun.*')">Akun / COA</x-admin.nav-link>
+                            <x-admin.nav-link :href="route('admin.master.periode.index')" :active="request()->routeIs('admin.master.periode.*')">Periode / Tahun Buku</x-admin.nav-link>
                             <x-admin.nav-link :href="route('admin.master-data.pengaturan-koperasi')" :active="request()->routeIs('admin.master-data.pengaturan-koperasi')">Pengaturan Koperasi</x-admin.nav-link>
                         </div>
                     </div>
